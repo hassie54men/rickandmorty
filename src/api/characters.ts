@@ -9,10 +9,15 @@ export const getCharacters = async () => {
     const res: AxiosResponse<CharacterListResponse> = await apiClient.get(
       ENDPOINTS.charactersList,
     );
+    if (res.status !== 200) {
+      throw new Error("No Data");
+    }
+
     return res.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error(error.message);
+      return error.message;
     }
   }
 };

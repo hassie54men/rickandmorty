@@ -1,5 +1,5 @@
-export const BASE_URL = 'https://rickandmortyapi.com/api';
+export const BASE_URL = "https://rickandmortyapi.com/api";
 
 export const ENDPOINTS = {
-  charactersList: "/character"
-}
+  charactersList: "/character344",
+};

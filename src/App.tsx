@@ -1,10 +1,8 @@
-import './App.css'
+import "./App.css";
+import { CharacterList } from "./features/characters/components/CharacterList.tsx";
 
 function App() {
-
-  return (
-     <p></p>
-     )
+  return <CharacterList />;
 }
 
-export default App
+export default App;
