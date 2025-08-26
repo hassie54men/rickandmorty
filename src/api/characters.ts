@@ -4,7 +4,7 @@ import type { AxiosResponse } from "axios";
 import axios from "axios";
 import type { CharacterListResponse } from "./types/characters.ts";
 
-export const getCharacters = async () => {
+export async function getCharacters() {
   try {
     const res: AxiosResponse<CharacterListResponse> = await apiClient.get(
       ENDPOINTS.charactersList,
@@ -20,4 +20,4 @@ export const getCharacters = async () => {
       return error.message;
     }
   }
-};
+}
