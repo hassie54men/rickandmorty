@@ -1,5 +1,5 @@
 export interface Location {
-  id: 1;
+  id: number;
   name: string;
   type: string;
   dimension: string;
@@ -10,9 +10,9 @@ export interface Location {
 
 export interface LocationListResponse {
   info: {
-    count: 126;
-    pages: 7;
-    next: "https://rickandmortyapi.com/api/location?page=2";
+    count: number;
+    pages: number;
+    next: string;
     prev: null;
   };
   results: Location[];

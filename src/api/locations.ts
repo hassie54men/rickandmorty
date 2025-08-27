@@ -1,12 +1,12 @@
 import { apiClient } from "./apiClient.ts";
-import { ENDPOINTSLOCATION } from "./constants.ts";
+import { ENDPOINTS } from "./constants.ts";
 import axios, { type AxiosResponse } from "axios";
 import type { LocationListResponse } from "./types/locations.ts";
 
-export async function getLocation() {
+export async function getLocations() {
   try {
     const res: AxiosResponse<LocationListResponse> = await apiClient.get(
-      ENDPOINTSLOCATION.locationList,
+      ENDPOINTS.locationList,
     );
     if (res) {
       return res.data;

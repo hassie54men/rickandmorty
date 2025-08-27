@@ -3,18 +3,18 @@ import type {
   Location,
   LocationListResponse,
 } from "../../../api/types/locations.ts";
-import { getLocation } from "../../../api/locations.ts";
+import { getLocations } from "../../../api/locations.ts";
 import { Grid } from "@mui/material";
 import { LocationCard } from "./LocationCard.tsx";
 
 export default function LocationList() {
   const [location, setLocation] = useState<Location[]>();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
-    getLocation().then((res) => {
+    getLocations().then((res) => {
       const response = res as LocationListResponse | undefined;
       if (response) {
         console.log(response?.results);
@@ -29,17 +29,15 @@ export default function LocationList() {
     return <p>loading...</p>;
   }
   if (error) {
-    alert("error");
+    return alert("error");
   }
   return (
-    <>
-      <Grid container spacing={3} columns={{ xs: 3, md: 6 }}>
-        {location?.map((item) => (
-          <Grid key={item.id} size={{ xs: 12, md: 3 }}>
-            <LocationCard {...item} />
-          </Grid>
-        ))}
-      </Grid>
-    </>
+    <Grid container spacing={3} columns={{ xs: 3, md: 6 }}>
+      {location?.map((item) => (
+        <Grid key={item.id} size={{ xs: 12, md: 3 }}>
+          <LocationCard {...item} />
+        </Grid>
+      ))}
+    </Grid>
   );
 }
