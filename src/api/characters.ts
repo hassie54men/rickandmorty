@@ -7,9 +7,9 @@ import type { Character, CharacterListResponse } from "./types/characters";
 export async function getCharacters() {
   try {
     const res: AxiosResponse<CharacterListResponse> = await apiClient.get(
-      ENDPOINTS.charactersList,
+      ENDPOINTS.characters,
     );
-    if (res.status !== 200) {
+    if (res.status === 404) {
       throw new Error("No Data");
     }
 
