@@ -21,3 +21,21 @@ export async function getCharacters() {
     }
   }
 }
+
+export async function getCharacter(id) {
+  try {
+    const res: AxiosResponse<Character> = await apiClient.get(
+      ENDPOINTS.character(id),
+    );
+    if (res.status === 404) {
+      throw new Error("No Data");
+    }
+
+    return res.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error(error.message);
+      throw error;
+    }
+  }
+}
