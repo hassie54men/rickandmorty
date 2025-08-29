@@ -1,3 +1,5 @@
+import type { BaseListResponse } from "./global";
+
 export interface Location {
   id: 1;
   name: string;
@@ -8,12 +10,4 @@ export interface Location {
   created: string;
 }
 
-export interface LocationListResponse {
-  info: {
-    count: 126;
-    pages: 7;
-    next: "https://rickandmortyapi.com/api/location?page=2";
-    prev: null;
-  };
-  results: Location[];
-}
+export type LocationListResponse = BaseListResponse<Location[]>;
