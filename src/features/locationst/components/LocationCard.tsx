@@ -1,4 +1,4 @@
-import type { Location } from "../../../api/types/locations.ts";
+import type { Location } from "../../../api/types/locations";
 import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 
 export function LocationCard(props: Location) {

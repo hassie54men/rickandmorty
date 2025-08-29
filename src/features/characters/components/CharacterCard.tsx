@@ -5,14 +5,22 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import type { Character } from "../../../api/types/characters.ts";
+import type { Character } from "../../../api/types/characters";
+import { useNavigate } from "react-router";
+import { appRoutes } from "../../../app/router/routes";
 
 export function CharacterCard(props: Character) {
-  const { name, gender, location, image } = props;
+  const { name, gender, location, image, id } = props;
+  const navigate = useNavigate();
 
   return (
-    <Card className="card-item">
+    <Card
+      sx={{
+        height: "100%",
+      }}
+    >
       <CardActionArea
+        onClick={() => navigate(`${appRoutes.characters}/${id}`)}
         sx={{
           height: "100%",
           display: "flex",

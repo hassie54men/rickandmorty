@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import type {
   Location,
   LocationListResponse,
-} from "../../../api/types/locations.ts";
-import { getLocation } from "../../../api/locations.ts";
+} from "../../../api/types/locations";
+import { getLocation } from "../../../api/locations";
 import { Grid } from "@mui/material";
-import { LocationCard } from "./LocationCard.tsx";
+import { LocationCard } from "./LocationCard";
 
 export default function LocationList() {
   const [location, setLocation] = useState<Location[]>();

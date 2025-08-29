@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import type {
   Character,
   CharacterListResponse,
-} from "../../../api/types/characters.ts";
-import { getCharacters } from "../../../api/characters.ts";
-import { CharacterCard } from "./CharacterCard.tsx";
+} from "../../../api/types/characters";
+import { getCharacters } from "../../../api/characters";
+import { CharacterCard } from "./CharacterCard";
 import { Grid } from "@mui/material";
 
 export function CharacterList() {

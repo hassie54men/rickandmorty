@@ -1,8 +1,8 @@
-import { apiClient } from "./apiClient.ts";
-import { ENDPOINTS } from "./constants.ts";
+import { apiClient } from "./apiClient";
+import { ENDPOINTS } from "./constants";
 import type { AxiosResponse } from "axios";
 import axios from "axios";
-import type { CharacterListResponse } from "./types/characters.ts";
+import type { Character, CharacterListResponse } from "./types/characters";
 
 export async function getCharacters() {
   try {
