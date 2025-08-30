@@ -3,12 +3,13 @@ import { getCharacter } from "../../../api/characters";
 import { useEffect, useState } from "react";
 import type { Character } from "../../../api/types/characters";
 import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
   Typography,
 } from "@mui/material";
+import LocationDetail from "../../locationst/components/LocationDetail";
 
 export const CharacterDetail = () => {
   const params = useParams();
@@ -32,34 +33,35 @@ export const CharacterDetail = () => {
     //   <p>{`Episodes: ${character?.episode.length}`}</p>
     //   <img src={character?.image} alt="" />
     // </div>
-
-    <Card
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        maxWidth: "300px",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          image={character?.image}
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5">
-            {`Name: ${character?.name}`}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {`Gender: ${character?.gender}`}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {`Episodes: ${character?.episode.length}`}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <Box>
+      <div className="personage_info">
+        <div className="personage_info-image">
+          <img src={character?.image} alt="" />
+        </div>
+        <div className="personage_info-text">
+          <p>{`Created: ${character?.created}`}</p>
+          <p>{`Gender: ${character?.gender}`}</p>
+          <p>{`Name: ${character?.name}`}</p>
+          <p>{`Species: ${character?.species}`}</p>
+          <p>{`Status: ${character?.status}`}</p>
+        </div>
+      </div>
+      <div className="personage-location">
+        <p>{`Name: ${character?.location.name}`}</p>
+        <a href={character?.location.url}>Локация</a>
+      </div>
+      <div className="accordion">
+        <Accordion>
+          <AccordionSummary>
+            <Typography>Episodes</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            {character?.episode.map((item) => (
+              <p>{item}</p>
+            ))}
+          </AccordionDetails>
+        </Accordion>
+      </div>
+    </Box>
   );
 };
