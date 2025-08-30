@@ -3,7 +3,7 @@ import type {
   Location,
   LocationListResponse,
 } from "../../../api/types/locations";
-import { getLocation } from "../../../api/locations";
+import { getLocations } from "../../../api/locations";
 import { Grid } from "@mui/material";
 import { LocationCard } from "./LocationCard";
 
@@ -14,7 +14,7 @@ export default function LocationList() {
 
   useEffect(() => {
     setLoading(true);
-    getLocation().then((res) => {
+    getLocations().then((res) => {
       const response = res as LocationListResponse | undefined;
       if (response) {
         console.log(response?.results);
