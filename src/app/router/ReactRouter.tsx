@@ -5,6 +5,7 @@ import { appRoutes } from "./routes";
 import { CharacterList } from "../../features/characters/components/CharacterList";
 import LocationList from "../../features/locationst/components/LocationList";
 import { CharacterDetail } from "../../features/characters/components/CharacterDetail";
+import LocationDetail from "../../features/locationst/components/LocationDetail";
 export default function ReactRouter() {
   return (
     <>
@@ -14,6 +15,7 @@ export default function ReactRouter() {
           <Route path={appRoutes.characters} element={<CharacterList />} />
           <Route path={appRoutes.locations} element={<LocationList />} />
           <Route path={appRoutes.characterId} element={<CharacterDetail />} />
+          <Route path={appRoutes.locationId} element={<LocationDetail />} />
           <Route path="*" element={<div>NotFound</div>} />
         </Route>
       </Routes>
