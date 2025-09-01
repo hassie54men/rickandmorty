@@ -13,21 +13,21 @@ import { appRoutes } from "../../../app/router/routes";
 
 export const CharacterDetail = () => {
   const params = useParams();
-  const charId = params.id;
-  console.log(charId);
+  const charId = Number(params.id);
   const [character, setCharacter] = useState<Character | null>(null);
   useEffect(() => {
     getCharacter(charId).then((res) => {
-      const response = res;
-      console.log(response);
-      if (response) {
-        setCharacter(response);
+      if (res) {
+        setCharacter(res);
       }
     });
   }, []);
 
   const getLocationId = () => {
     return character?.location.url.split("/").pop(); // id
+  };
+  const getEpisodeId = (url: string) => {
+    return url.split("/").pop();
   };
 
   return (
@@ -37,7 +37,7 @@ export const CharacterDetail = () => {
     //   <p>{`Episodes: ${character?.episode.length}`}</p>
     //   <img src={character?.image} alt="" />
     // </div>
-    <Box>
+    <Box sx={{ marginBlock: "20px" }}>
       <div className="personage_info">
         <div className="personage_info-image">
           <img src={character?.image} alt="" />
@@ -61,7 +61,11 @@ export const CharacterDetail = () => {
           </AccordionSummary>
           <AccordionDetails>
             {character?.episode.map((item) => (
-              <p>{item}</p>
+              <p>
+                <Link to={appRoutes.episodes + "/" + getEpisodeId(item)}>
+                  {`Эпизод ${getEpisodeId(item)}`}
+                </Link>
+              </p>
             ))}
           </AccordionDetails>
         </Accordion>

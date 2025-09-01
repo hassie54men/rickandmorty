@@ -40,7 +40,7 @@ export function CharacterList() {
 
   return (
     <>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{ marginBlock: "20px" }}>
         {characters.map((item) => (
           <Grid key={item.id} size={{ xs: 12, md: 3 }}>
             <CharacterCard {...item} />

@@ -6,9 +6,10 @@ import { Box } from "@mui/material";
 
 export default function LocationDetail() {
   const params = useParams();
-  const locId = params.id;
+  const locId = Number(params.id);
 
-  const [location, setLocation] = useState<Location | undefined>(undefined);
+  const [location, setLocation] = useState<Location | null>(null);
+
   useEffect(() => {
     getLocation(locId).then((loc) => {
       console.log(loc);

@@ -23,6 +23,12 @@ export default function Layout() {
         >
           Локации
         </NavLink>
+        <NavLink
+          to={appRoutes.episodes}
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+        >
+          Эпизоды
+        </NavLink>
       </header>
       <main className="container">
         <Outlet />
