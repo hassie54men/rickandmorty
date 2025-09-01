@@ -39,3 +39,19 @@ export async function getCharacter(id: number) {
     }
   }
 }
+
+export async function getCharacterSearch(name: string) {
+  try {
+    const res: AxiosResponse<Character> = await apiClient.get(
+      ENDPOINTS.characterSearch(name),
+    );
+    if (res) {
+      return res.data;
+    }
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error(error.message);
+      throw error;
+    }
+  }
+}
