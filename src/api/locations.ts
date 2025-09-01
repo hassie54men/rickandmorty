@@ -21,7 +21,7 @@ export async function getLocations() {
   }
 }
 
-export async function getLocation(id) {
+export async function getLocation(id: number) {
   try {
     const res: AxiosResponse<Location> = await apiClient.get(
       ENDPOINTS.location(id),

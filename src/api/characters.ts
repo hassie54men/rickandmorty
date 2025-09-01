@@ -22,7 +22,7 @@ export async function getCharacters() {
   }
 }
 
-export async function getCharacter(id) {
+export async function getCharacter(id: number) {
   try {
     const res: AxiosResponse<Character> = await apiClient.get(
       ENDPOINTS.character(id),
