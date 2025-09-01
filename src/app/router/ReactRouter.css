@@ -40,3 +40,23 @@ a{
 .active-link{
   color: cornflowerblue;
 }
+.container{
+  max-width: 920px;
+  margin: 0 auto;
+}
+.personage_info{
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+}
+.personage_info-text p {
+  font-size: 20px;
+}
+.personage-location{
+  display: flex;
+  justify-content: center;
+  margin-block: 50px;
+  flex-direction: column;
+  align-items: center;
+}

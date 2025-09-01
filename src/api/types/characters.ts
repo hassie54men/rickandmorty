@@ -1,3 +1,5 @@
+import type { BaseListResponse } from "./global";
+
 export interface Character {
   id: number;
   name: string;
@@ -19,12 +21,4 @@ export interface Character {
   created: string;
 }
 
-export interface CharacterListResponse {
-  info: {
-    count: number;
-    pages: number;
-    next: string;
-    prev: string | null;
-  };
-  results: Character[];
-}
+export type CharacterListResponse = BaseListResponse<Character[]>;

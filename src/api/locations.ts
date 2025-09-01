@@ -1,12 +1,12 @@
-import { apiClient } from "./apiClient.ts";
-import { ENDPOINTSLOCATION } from "./constants.ts";
+import { apiClient } from "./apiClient";
+import { ENDPOINTS } from "./constants";
 import axios, { type AxiosResponse } from "axios";
-import type { LocationListResponse } from "./types/locations.ts";
+import type { LocationListResponse } from "./types/locations";
 
-export async function getLocation() {
+export async function getLocations() {
   try {
     const res: AxiosResponse<LocationListResponse> = await apiClient.get(
-      ENDPOINTSLOCATION.locationList,
+      ENDPOINTS.locations,
     );
     if (res) {
       return res.data;
@@ -17,6 +17,20 @@ export async function getLocation() {
     if (axios.isAxiosError(error)) {
       console.error(error.message);
       return error.message;
+    }
+  }
+}
+
+export async function getLocation(id) {
+  try {
+    const res: AxiosResponse<Location> = await apiClient.get(
+      ENDPOINTS.location(id),
+    );
+    return res.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error(error.message);
+      throw error;
     }
   }
 }

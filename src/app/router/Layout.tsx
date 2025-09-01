@@ -1,29 +1,32 @@
 import { NavLink, Outlet } from "react-router";
+import { appRoutes } from "./routes";
 
 export default function Layout() {
   return (
     <>
       <header className="header">
         <NavLink
-          to="/"
+          to={appRoutes.main}
           className={({ isActive }) => (isActive ? "active-link" : "")}
         >
           Главная
         </NavLink>
         <NavLink
-          to="/about"
+          to={appRoutes.characters}
           className={({ isActive }) => (isActive ? "active-link" : "")}
         >
-          О нас
+          Карточки персонажей
         </NavLink>
         <NavLink
-          to="/posts"
+          to={appRoutes.locations}
           className={({ isActive }) => (isActive ? "active-link" : "")}
         >
-          Блог
+          Локации
         </NavLink>
       </header>
-      <Outlet />
+      <main className="container">
+        <Outlet />
+      </main>
       <footer className="footer">2025</footer>
     </>
   );

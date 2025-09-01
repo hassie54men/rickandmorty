@@ -1,9 +1,8 @@
 export const BASE_URL = "https://rickandmortyapi.com/api";
 
 export const ENDPOINTS = {
-  charactersList: "/character",
-};
-
-export const ENDPOINTSLOCATION = {
-  locationList: "/location",
+  characters: "/character",
+  locations: "/location",
+  character: (id: number) => `/character/${id}`,
+  location: (id: number) => `location/${id}`,
 };
