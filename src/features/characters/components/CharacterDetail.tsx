@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { getCharacter } from "../../../api/characters";
 import { useEffect, useState } from "react";
 import type { Character } from "../../../api/types/characters";
@@ -9,7 +9,7 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import LocationDetail from "../../locationst/components/LocationDetail";
+import { appRoutes } from "../../../app/router/routes";
 
 export const CharacterDetail = () => {
   const params = useParams();
@@ -25,6 +25,10 @@ export const CharacterDetail = () => {
       }
     });
   }, []);
+
+  const getLocationId = () => {
+    return character?.location.url.split("/").pop(); // id
+  };
 
   return (
     // <div>
@@ -48,7 +52,7 @@ export const CharacterDetail = () => {
       </div>
       <div className="personage-location">
         <p>{`Name: ${character?.location.name}`}</p>
-        <a href={character?.location.url}>Локация</a>
+        <Link to={appRoutes.locations + "/" + getLocationId()}>Локация</Link>
       </div>
       <div className="accordion">
         <Accordion>
