@@ -11,7 +11,6 @@ export function EpisodeDetail() {
 
   useEffect(() => {
     getEpisode(episodeId).then((episode) => {
-      console.log(episode);
       if (episode) {
         setEpisode(episode);
       }
