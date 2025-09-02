@@ -4,10 +4,13 @@ import type { AxiosResponse } from "axios";
 import axios from "axios";
 import type { Character, CharacterListResponse } from "./types/characters";
 
-export async function getCharacters() {
+export async function getCharacters(params?: { name: string | undefined }) {
   try {
     const res: AxiosResponse<CharacterListResponse> = await apiClient.get(
       ENDPOINTS.characters,
+      {
+        params,
+      },
     );
     if (res.status === 404) {
       throw new Error("No Data");
@@ -15,10 +18,7 @@ export async function getCharacters() {
 
     return res.data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.error(error.message);
-      return error.message;
-    }
+    console.error(error);
   }
 }
 
@@ -35,7 +35,6 @@ export async function getCharacter(id: number) {
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error(error.message);
-      throw error;
     }
   }
 }
