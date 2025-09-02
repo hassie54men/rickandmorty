@@ -7,4 +7,5 @@ export const ENDPOINTS = {
   character: (id: number) => `/character/${id}`,
   location: (id: number) => `location/${id}`,
   episode: (id: number) => `episode/${id}`,
+  characterSearch: (name: string) => `/character/name=${name}`,
 };
