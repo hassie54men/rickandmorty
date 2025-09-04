@@ -35,11 +35,12 @@ export function CharacterCard(props: Character) {
         <CardMedia
           image={image}
           component="img"
-          height="140"
+          height="220"
           sx={{
             objectFit: "cover",
             width: "100%",
-            marginTop: "auto", // прижимает к низу
+            marginTop: "auto",
+            borderRadius: "5px",
           }}
         />
       </CardActionArea>

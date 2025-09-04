@@ -18,6 +18,9 @@ export function Main() {
         alt=""
         width="494"
         height="741"
+        style={{
+          borderRadius: "5px",
+        }}
       />
     </Box>
   );

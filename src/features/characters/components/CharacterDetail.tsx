@@ -40,7 +40,7 @@ export const CharacterDetail = () => {
     <Box sx={{ marginBlock: "20px" }}>
       <div className="personage_info">
         <div className="personage_info-image">
-          <img src={character?.image} alt="" />
+          <img src={character?.image} alt="" style={{ borderRadius: "5px" }} />
         </div>
         <div className="personage_info-text">
           <p>{`Created: ${character?.created}`}</p>
