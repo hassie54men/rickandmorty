@@ -4,7 +4,10 @@ import type { AxiosResponse } from "axios";
 import axios from "axios";
 import type { Character, CharacterListResponse } from "./types/characters";
 
-export async function getCharacters(params?: { name: string | undefined }) {
+export async function getCharacters(params?: {
+  name: string | undefined;
+  page: number | undefined;
+}) {
   try {
     const res: AxiosResponse<CharacterListResponse> = await apiClient.get(
       ENDPOINTS.characters,
