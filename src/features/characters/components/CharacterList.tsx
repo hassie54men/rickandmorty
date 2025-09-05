@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { Character } from "../../../api/types/characters";
 import { getCharacters } from "../../../api/characters";
 import { CharacterCard } from "./CharacterCard";
-import { Box, Button, ButtonGroup, Grid, TextField } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 
 export function CharacterList() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -11,6 +11,7 @@ export function CharacterList() {
   const [value, setValue] = useState<string>("");
   const [search, setSearch] = useState<string>();
   const [page, setPage] = useState(1);
+  const [pages, setPages] = useState(42);
 
   function nextPage() {
     if (page < 42) {
@@ -33,6 +34,7 @@ export function CharacterList() {
           console.log(res.results);
           setCharacters(res.results);
           setError(null);
+          setPages(res.info.pages);
         } else {
           setError("Not found");
         }
@@ -77,12 +79,20 @@ export function CharacterList() {
       </Box>
       <Box
         component={"div"}
-        sx={{ display: "flex", justifyContent: "center", marginBlock: "20px" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          marginBlock: "20px",
+          alignItems: "center",
+        }}
       >
-        <ButtonGroup variant="outlined" aria-label="Basic button group">
-          <Button onClick={nextPage}>Next</Button>
-          <Button onClick={previousPage}>Previous</Button>
-        </ButtonGroup>
+        <Button onClick={previousPage} disabled={page === 1}>
+          Previous
+        </Button>
+        <Typography>{`${page} / ${pages}`}</Typography>
+        <Button onClick={nextPage} disabled={page >= 7}>
+          Next
+        </Button>
       </Box>
       <Grid container spacing={3} sx={{ marginBlock: "20px" }}>
         {characters.map((item) => (
