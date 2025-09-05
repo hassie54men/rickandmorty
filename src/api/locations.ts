@@ -3,10 +3,16 @@ import { ENDPOINTS } from "./constants";
 import axios, { type AxiosResponse } from "axios";
 import type { LocationListResponse } from "./types/locations";
 
-export async function getLocations() {
+export async function getLocations(params?: {
+  name?: string | undefined;
+  page?: number | undefined;
+}) {
   try {
     const res: AxiosResponse<LocationListResponse> = await apiClient.get(
       ENDPOINTS.locations,
+      {
+        params,
+      },
     );
     if (res) {
       return res.data;
