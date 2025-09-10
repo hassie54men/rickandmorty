@@ -1,12 +1,16 @@
 import "../App.css";
 import ReactRouter from "./router/ReactRouter";
+import { AuthProvider} from "./providers/authProvider";
 
 function App() {
+
   return (
     <>
       {/*<CharacterList />*/}
       {/*<LocationList />*/}
-      <ReactRouter />
+    <AuthProvider >
+        <ReactRouter  />
+    </AuthProvider>
     </>
   );
 }

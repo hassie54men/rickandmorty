@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import { getEpisodes } from "../../../api/episodes";
 import type { Episode } from "../../../api/types/episodes";
 import { Grid } from "@mui/material";
 import { EpisodeCard } from "./EpisodeCard";
+import {AuthContext} from "../../../app/providers/authProvider";
 
 export function EpisodeList() {
   const [episode, setEpisode] = useState<Episode[] | null>(null);
-  useEffect(() => {
+    const context  = useContext(AuthContext)
+
+    useEffect(() => {
     getEpisodes().then((res) => {
       if (res) {
         console.log(res.results);
@@ -14,6 +17,12 @@ export function EpisodeList() {
       }
     });
   }, []);
+
+    if (context && !context.isAuth) {
+        return <h2>No access</h2>
+    }
+
+
   return (
     <>
       <Grid
