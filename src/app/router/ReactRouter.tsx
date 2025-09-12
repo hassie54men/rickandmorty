@@ -9,6 +9,7 @@ import LocationDetail from "../../features/locationst/components/LocationDetail"
 import { EpisodeList } from "../../features/episodes/components/EpisodeList";
 import { Main } from "../../features/main/components/Main";
 import { EpisodeDetail } from "../../features/episodes/components/EpisodeDetail";
+import { Login } from "../../features/search/components/Login";
 export default function ReactRouter() {
   return (
     <>
@@ -21,6 +22,7 @@ export default function ReactRouter() {
           <Route path={appRoutes.characterId} element={<CharacterDetail />} />
           <Route path={appRoutes.locationId} element={<LocationDetail />} />
           <Route path={appRoutes.episodeId} element={<EpisodeDetail />} />
+          <Route path={appRoutes.login} element={<Login />} />
           <Route path="*" element={<div>NotFound</div>} />
         </Route>
       </Routes>

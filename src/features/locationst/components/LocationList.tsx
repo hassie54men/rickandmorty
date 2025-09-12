@@ -59,13 +59,13 @@ export default function LocationList() {
       <Box sx={{ display: "flex", marginBlock: "20px" }}>
         <TextField
           fullWidth
-          label="Search personage"
+          label="Login personage"
           id="location"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
         <Button variant="outlined" type={"submit"} onClick={searchLocation}>
-          Search
+          Login
         </Button>
       </Box>
       <Stack

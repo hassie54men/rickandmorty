@@ -1,12 +1,18 @@
-import { createContext, type ReactNode, useEffect, useState } from "react";
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 interface LoginProps {
   children: ReactNode;
 }
 
 interface LoginContextType {
-  user: string;
+  user: User | null;
   isLog: boolean;
-  login: () => void;
+  login: (email: string, password: string) => void;
   logout: () => void;
 }
 
@@ -37,7 +43,7 @@ export const LoginProvider = (props: LoginProps) => {
   }, []);
 
   const login = (email: string, password: string) => {
-    const adminEmail: string = "admin@mail.ru";
+    const adminEmail: string = "admin";
     const adminPassword: string = "admin";
     const adminUser = {
       id: "1",
@@ -50,6 +56,7 @@ export const LoginProvider = (props: LoginProps) => {
       setIsLog(true);
       localStorage.setItem(USER_KEY, JSON.stringify(adminUser));
     } else {
+      console.log("неверный логин и пароль");
       setUser(null);
       setIsLog(false);
     }
@@ -61,12 +68,16 @@ export const LoginProvider = (props: LoginProps) => {
     localStorage.removeItem(USER_KEY);
   };
 
-  const value = {
-    user: user,
-    isLog: isLog,
+  const value: LoginContextType = {
+    user,
+    isLog,
     login,
     logout,
   };
 
   return <LoginContext value={value}>{children}</LoginContext>;
 };
+
+export function useLogin() {
+  return useContext(LoginContext);
+}

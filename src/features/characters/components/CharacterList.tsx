@@ -64,7 +64,7 @@ export function CharacterList() {
       >
         <TextField
           fullWidth
-          label="Search personage"
+          label="Login personage"
           id="personage"
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -74,7 +74,7 @@ export function CharacterList() {
           type={"submit"}
           onClick={() => setSearch(value)}
         >
-          Search
+          Login
         </Button>
       </Box>
       <Box
