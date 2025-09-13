@@ -10,10 +10,10 @@ interface LoginProps {
 }
 
 interface LoginContextType {
-  user: User | null;
-  isLog: boolean;
-  login: (email: string, password: string) => void;
-  logout: () => void;
+  user?: User | null;
+  isLog?: boolean;
+  login?: (email: string, password: string) => void;
+  logout?: () => void;
 }
 
 interface User {
@@ -22,7 +22,7 @@ interface User {
   email: string;
 }
 
-export const LoginContext = createContext<LoginContextType | null>(null);
+export const LoginContext = createContext<LoginContextType | undefined>(undefined);
 
 export const LoginProvider = (props: LoginProps) => {
   const [user, setUser] = useState<User | null>(null);
@@ -59,6 +59,7 @@ export const LoginProvider = (props: LoginProps) => {
       console.log("неверный логин и пароль");
       setUser(null);
       setIsLog(false);
+
     }
   };
 
