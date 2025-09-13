@@ -1,19 +1,35 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { useLogin } from "../../../app/providers/loginProvider";
+import {UserCard} from "./UserCard";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, logout, isLog, user } = useLogin();
+  const [error, setError] = useState('')
+  // const [errorLogin, setErrorLogin] = useState('')
+  const { login, isLog, user} = useLogin();
 
   const handleLogin = () => {
+    const adminEmail: string = "admin";
+    const adminPassword: string = "admin";
+    if(email === '' || password === ''){
+      setError('Введите логин и пароль')
+      return
+    }
+    if (email !== adminEmail || password !== adminPassword){
+      setError('Неправильный логин или пароль')
+      return
+    }
+    setError('')
     login(email, password);
+
   };
 
   if (isLog) {
-    return <p>hello {user.name}</p>;
+    return <UserCard/>;
   }
+
   return (
     <Box
       sx={{
@@ -40,6 +56,7 @@ export function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Box>
+      {error}
       <Box>
         <Button variant="outlined" onClick={handleLogin}>
           Login
