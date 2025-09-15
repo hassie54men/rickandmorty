@@ -2,14 +2,19 @@ import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { useLogin } from "../../../app/providers/loginProvider";
 import {UserCard} from "./UserCard";
+import {appRoutes} from "../../../app/router/routes";
+import {useNavigate} from "react-router";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState('')
+  const navigate = useNavigate()
   // const [errorLogin, setErrorLogin] = useState('')
-  const { login, isLog, user} = useLogin();
-
+  const { login, isLog} = useLogin();
+  const nandleNavigate = () => {
+    navigate(appRoutes.user)
+  }
   const handleLogin = () => {
     const adminEmail: string = "admin";
     const adminPassword: string = "admin";
@@ -23,6 +28,8 @@ export function Login() {
     }
     setError('')
     login(email, password);
+    nandleNavigate()
+
 
   };
 
