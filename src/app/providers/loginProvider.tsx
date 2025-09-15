@@ -44,7 +44,7 @@ export const LoginProvider = (props: LoginProps) => {
   }, []);
 
   const login = (email: string, password: string) => {
-    const adminEmail: string = "admin";
+    const adminEmail: string = "admin@mail.ru";
     const adminPassword: string = "admin";
     const adminUser = {
       id: "1",
