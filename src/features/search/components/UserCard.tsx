@@ -1,10 +1,17 @@
 import {useLogin} from "../../../app/providers/loginProvider";
 import {Avatar, Box, Button} from "@mui/material";
+import {useNavigate} from "react-router";
+import {appRoutes} from "../../../app/router/routes";
 
 export function UserCard() {
   const { user, logout } = useLogin();
+  const navigate = useNavigate()
+  function handleNavigate(){
+    navigate(appRoutes.login)
+  }
   function handleLogout(){
     logout();
+    handleNavigate()
   }
   return(
      <Box sx={{
