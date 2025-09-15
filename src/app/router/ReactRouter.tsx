@@ -10,7 +10,7 @@ import { EpisodeList } from "../../features/episodes/components/EpisodeList";
 import { Main } from "../../features/main/components/Main";
 import { EpisodeDetail } from "../../features/episodes/components/EpisodeDetail";
 import { Login } from "../../features/search/components/Login";
-import {UserCard} from "../../features/search/components/UserCard";
+import {UserCard} from "../../features/user/components/UserCard";
 export default function ReactRouter() {
   return (
     <>
