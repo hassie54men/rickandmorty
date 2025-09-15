@@ -18,7 +18,8 @@ export function Login() {
   const handleNavigate = () => {
     navigate(appRoutes.user)
   }
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault()
       login(email, password);
       handleNavigate()
   };
@@ -36,26 +37,30 @@ export function Login() {
         alignItems: "center",
         gap: "10px",
       }}
+      component='form'
+      onSubmit={handleLogin}
     >
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <TextField
-          id="outlined-basic"
+          id="email"
           label="Email"
           variant="outlined"
           value={email}
+          type='email'
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
-          id="outlined-basic"
+          id="password"
           label="Password"
           variant="outlined"
+          type='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </Box>
       {error}
       <Box>
-        <Button variant="outlined" onClick={handleLogin}>
+        <Button variant="outlined" type='submit'>
           Login
         </Button>
       </Box>
