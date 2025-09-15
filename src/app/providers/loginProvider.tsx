@@ -1,7 +1,6 @@
 import {
   createContext,
   type ReactNode,
-  useContext,
   useEffect,
   useState,
 } from "react";
@@ -10,10 +9,11 @@ interface LoginProps {
 }
 
 interface LoginContextType {
-  user?: User | null;
-  isLog?: boolean;
-  login?: (email: string, password: string) => void;
-  logout?: () => void;
+  user: User | null;
+  error: string;
+  isLog: boolean;
+  login: (email: string, password: string) => void;
+  logout: () => void;
 }
 
 interface User {
@@ -22,11 +22,12 @@ interface User {
   email: string;
 }
 
-export const LoginContext = createContext<LoginContextType | undefined>(undefined);
+export const LoginContext = createContext<LoginContextType | null>( null);
 
 export const LoginProvider = (props: LoginProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLog, setIsLog] = useState(false);
+  const [error, setError] = useState<string>('')
   const USER_KEY = "key";
   const { children } = props;
 
@@ -59,7 +60,7 @@ export const LoginProvider = (props: LoginProps) => {
       console.log("неверный логин и пароль");
       setUser(null);
       setIsLog(false);
-
+      setError(error)
     }
   };
 
@@ -72,6 +73,7 @@ export const LoginProvider = (props: LoginProps) => {
   const value: LoginContextType = {
     user,
     isLog,
+    error,
     login,
     logout,
   };
@@ -79,6 +81,3 @@ export const LoginProvider = (props: LoginProps) => {
   return <LoginContext value={value}>{children}</LoginContext>;
 };
 
-export function useLogin() {
-  return useContext(LoginContext);
-}
