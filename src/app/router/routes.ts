@@ -6,7 +6,8 @@ type AppRoutes =
   | "locationId"
   | "episodes"
   | "episodeId"
-  | "login";
+  | "login"
+  | "user"
 
 export const appRoutes: Record<AppRoutes, string> = {
   main: "/",
@@ -17,4 +18,5 @@ export const appRoutes: Record<AppRoutes, string> = {
   locationId: "/locations/:id",
   episodeId: "/episodes/:id",
   login: "/login",
+  user: "/user"
 };
