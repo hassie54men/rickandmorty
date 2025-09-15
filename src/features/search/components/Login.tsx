@@ -1,36 +1,26 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
-import { useLogin } from "../../../app/providers/loginProvider";
-import {UserCard} from "./UserCard";
 import {appRoutes} from "../../../app/router/routes";
 import {useNavigate} from "react-router";
+import {UserCard} from "../../user/components/UserCard";
+import {useLogin} from "../../../app/hooks/hooks";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState('')
   const navigate = useNavigate()
   // const [errorLogin, setErrorLogin] = useState('')
-  const { login, isLog} = useLogin();
-  const nandleNavigate = () => {
+  const context = useLogin();
+  if (!context) {
+    throw new Error("useLogin must be used within a LoginProvider");
+  }
+  const { login, isLog, error} = context;
+  const handleNavigate = () => {
     navigate(appRoutes.user)
   }
   const handleLogin = () => {
-    const adminEmail: string = "admin";
-    const adminPassword: string = "admin";
-    if(email === '' || password === ''){
-      setError('Введите логин и пароль')
-      return
-    }
-    if (email !== adminEmail || password !== adminPassword){
-      setError('Неправильный логин или пароль')
-      return
-    }
-    setError('')
-    login(email, password);
-    nandleNavigate()
-
-
+      login(email, password);
+      handleNavigate()
   };
 
   if (isLog) {
