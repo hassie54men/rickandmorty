@@ -10,6 +10,7 @@ import { EpisodeList } from "../../features/episodes/components/EpisodeList";
 import { Main } from "../../features/main/components/Main";
 import { EpisodeDetail } from "../../features/episodes/components/EpisodeDetail";
 import { Login } from "../../features/search/components/Login";
+import {UserCard} from "../../features/search/components/UserCard";
 export default function ReactRouter() {
   return (
     <>
@@ -23,6 +24,7 @@ export default function ReactRouter() {
           <Route path={appRoutes.locationId} element={<LocationDetail />} />
           <Route path={appRoutes.episodeId} element={<EpisodeDetail />} />
           <Route path={appRoutes.login} element={<Login />} />
+          <Route path={appRoutes.user} element={<UserCard />} />
           <Route path="*" element={<div>NotFound</div>} />
         </Route>
       </Routes>
