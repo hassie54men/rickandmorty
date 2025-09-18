@@ -36,8 +36,8 @@ export function UserCard() {
        marginBlock: "20px",
      }}>
        <Avatar src='https://1avatara.ru/pic/animation/animation0036.gif' sx={{width: '100px', height: '100px'}}></Avatar>
-       <p>Hello {user.name}</p>
-       <p>Your email: {user.email}</p>
+       <p>Hello {user !== null ? user.name : null }</p>
+       <p>Your email: {user !== null ? user.email : null}</p>
        <Button variant="outlined" onClick={handleLogout}>
          Logout
        </Button>
