@@ -1,14 +1,14 @@
-import {createContext, type ReactNode,  useLayoutEffect, useState} from "react";
+import {createContext, type ReactNode, useLayoutEffect, useState} from "react";
 
 interface AuthProviderProps {
     children: ReactNode
 }
 
-interface AuthContextType {
+export interface AuthContextType {
     user: User | null,
     isAuth: boolean,
-    login: (email: string, password: string) => void,
-    logout: () => void;
+    login?: (email: string, password: string) => Promise<string>,
+    logout?: () => void;
 
 }
 
@@ -56,11 +56,11 @@ export const  AuthProvider = (props: AuthProviderProps) => {
             setUser(defaultUser)
             setIsAuth(true)
             localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(defaultUser))
-            Promise.resolve()
+           return  Promise.resolve('Success')
         } else {
             setUser(null)
             setIsAuth(false)
-            Promise.reject('Bad credentials')
+            return Promise.reject('Bad credentials')
         }
     }
 
@@ -87,4 +87,3 @@ export const  AuthProvider = (props: AuthProviderProps) => {
         </AuthContext>
     );
 }
-

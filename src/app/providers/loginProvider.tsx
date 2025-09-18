@@ -43,7 +43,7 @@ export const LoginProvider = (props: LoginProps) => {
     }
   }, []);
 
-  const login = (email: string, password: string) => {
+  const login = async (email: string, password: string) => {
     const adminEmail: string = "admin@mail.ru";
     const adminPassword: string = "admin";
     const adminUser = {
@@ -56,11 +56,11 @@ export const LoginProvider = (props: LoginProps) => {
       setUser(adminUser);
       setIsLog(true);
       localStorage.setItem(USER_KEY, JSON.stringify(adminUser));
+      return Promise.resolve('Success')
     } else {
-      console.log("неверный логин и пароль");
       setUser(null);
       setIsLog(false);
-      setError(error)
+      return Promise.reject('Bad credentials')
     }
   };
 

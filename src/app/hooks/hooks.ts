@@ -2,5 +2,10 @@ import {useContext} from "react";
 import {LoginContext} from "../providers/loginProvider";
 
 export function useLogin() {
-  return useContext(LoginContext);
+  const context = useContext(LoginContext);
+
+  if (!context) {
+    throw new Error("useLogin must be used within a LoginProvider");
+  }
+  return context
 }
