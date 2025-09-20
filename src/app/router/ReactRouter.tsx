@@ -9,8 +9,8 @@ import LocationDetail from "../../features/locationst/components/LocationDetail"
 import { EpisodeList } from "../../features/episodes/components/EpisodeList";
 import { Main } from "../../features/main/components/Main";
 import { EpisodeDetail } from "../../features/episodes/components/EpisodeDetail";
-import { Login } from "../../features/search/components/Login";
 import {UserCard} from "../../features/user/components/UserCard";
+import {Login} from "../../features/login/components/Login";
 export default function ReactRouter() {
   return (
     <>
