@@ -4,6 +4,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import axios from "axios";
 interface LoginProps {
   children: ReactNode;
 }
@@ -20,6 +21,7 @@ interface User {
   id: string;
   name: string;
   email: string;
+  username: string;
 }
 
 export const LoginContext = createContext<LoginContextType | null>( null);
@@ -44,18 +46,16 @@ export const LoginProvider = (props: LoginProps) => {
   }, []);
 
   const login = async (email: string, password: string) => {
-    const adminEmail: string = "admin@mail.ru";
-    const adminPassword: string = "admin";
-    const adminUser = {
-      id: "1",
-      name: "Danil",
-      email: "admin@mail.ru",
-    };
+    const res = await axios.get('https://jsonplaceholder.typicode.com/users')
+    const data = res.data
+    const user = data.find((item: User) => item.email === email && item.username === password)
+    // емайл = Shanna@melissa.tv
+    // пароль = Antonette для проверки
 
-    if (adminEmail === email && adminPassword === password) {
-      setUser(adminUser);
+    if (user) {
+      setUser(user);
       setIsLog(true);
-      localStorage.setItem(USER_KEY, JSON.stringify(adminUser));
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
       return Promise.resolve('success')
     } else {
       console.log("неверный логин и пароль");
