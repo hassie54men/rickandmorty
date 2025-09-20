@@ -2,7 +2,7 @@ import { Box, Button, TextField } from "@mui/material";
 import {type FormEvent, useState} from "react";
 import {appRoutes} from "../../../app/router/routes";
 import {useNavigate} from "react-router";
-import {useLogin} from "../../../app/hooks/hooks";
+import {useLogin} from "../../../app/hooks/useLogin";
 interface Filed {
   value: string,
   error: string | null

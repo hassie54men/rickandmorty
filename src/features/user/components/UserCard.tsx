@@ -1,6 +1,6 @@
 
 import {Avatar, Box, Button} from "@mui/material";
-import {useLogin} from "../../../app/hooks/hooks";
+import {useLogin} from "../../../app/hooks/useLogin";
 import {useNavigate} from "react-router";
 import {appRoutes} from "../../../app/router/routes";
 

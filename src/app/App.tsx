@@ -1,15 +1,15 @@
 import "../App.css";
 import ReactRouter from "./router/ReactRouter";
-import {AuthProvider} from "./providers/authProvider";
+import { LoginProvider} from "./providers/loginProvider";
 
 function App() {
   return (
     <>
       {/*<CharacterList />*/}
       {/*<LocationList />*/}
-      <AuthProvider>
+      <LoginProvider>
         <ReactRouter />
-      </AuthProvider>
+      </LoginProvider>
     </>
   );
 }
