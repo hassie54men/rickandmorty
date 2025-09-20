@@ -2,7 +2,8 @@ import { Box, Button, TextField } from "@mui/material";
 import {type FormEvent, useState} from "react";
 import {appRoutes} from "../../../app/router/routes";
 import {useNavigate} from "react-router";
-import {useLogin} from "../../../app/hooks/useLogin";
+import {useLogin} from "../../../hooks/useLogin";
+
 interface Filed {
   value: string,
   error: string | null
@@ -13,7 +14,7 @@ export function Login() {
   const [password, setPassword] = useState<Filed>({value: '', error: null});
   const [error, setError] = useState()
   const navigate = useNavigate()
-  const { login} = useLogin();
+  const {login} = useLogin();
   const handleLogin = (e:FormEvent) => {
     e.preventDefault()
       login?.(email.value, password.value).then((res) => {

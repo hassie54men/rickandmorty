@@ -1,5 +1,6 @@
 import {useContext} from "react";
-import {LoginContext} from "../providers/loginProvider";
+import {LoginContext} from "../app/providers/loginProvider";
+
 
 export function useLogin() {
   const context = useContext(LoginContext);
