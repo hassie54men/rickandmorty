@@ -12,7 +12,7 @@ interface LoginContextType {
   user: User | null;
   error: string;
   isLog: boolean;
-  login: (email: string, password: string) => void;
+  login: (email: string, password: string) => Promise<string>;
   logout: () => void;
 }
 
@@ -56,11 +56,13 @@ export const LoginProvider = (props: LoginProps) => {
       setUser(adminUser);
       setIsLog(true);
       localStorage.setItem(USER_KEY, JSON.stringify(adminUser));
-      return Promise.resolve('Success')
+      return Promise.resolve('success')
     } else {
+      console.log("неверный логин и пароль");
       setUser(null);
       setIsLog(false);
-      return Promise.reject('Bad credentials')
+      setError(error)
+      return Promise.reject('ERROR')
     }
   };
 

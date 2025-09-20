@@ -3,7 +3,6 @@ import {LoginContext} from "../providers/loginProvider";
 
 export function useLogin() {
   const context = useContext(LoginContext);
-
   if (!context) {
     throw new Error("useLogin must be used within a LoginProvider");
   }
