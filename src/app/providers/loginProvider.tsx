@@ -51,6 +51,7 @@ export const LoginProvider = (props: LoginProps) => {
     const user = data.find((item: User) => item.email === email && item.username === password)
     // емайл = Shanna@melissa.tv
     // пароль = Antonette для проверки
+    // jsonplaceholder работает только с включенным впн
 
     if (user) {
       setUser(user);
